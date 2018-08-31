@@ -1,4 +1,4 @@
-# Console-based Social Networking Application
+# HackerRank Challenges
 
 [![MIT License](https://img.shields.io/badge/license-MIT%20License-green.svg)][1]
 [![Java Platform](https://img.shields.io/badge/platform-Java-blue.svg)][2]
@@ -18,7 +18,7 @@ A collection of programming challenges from the [HackerRank][3] website.
 - From a command line window, navigate to the (newly unzipped) project root folder, 
 then run the `mvn clean test` command, (make sure you have enough user permissions to install the application).
 
-- TODO: add instruction on how to run and test each challenge individually!
+- <u>**TODO**</u>: **add instruction on how to run and test each challenge individually!**
 
 
 ## License
