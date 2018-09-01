@@ -29,7 +29,7 @@ public class BirthdayCakeCandles {
     }
 
     /**
-     * Check whether input array values are within 0 <= i <= Mapth(10, 7)
+     * Check whether input array values are within 0 <= i <= Math.pow(10, 7)
      * @param parameters an array of integers
      * @return true if input values are valid, false otherwise.
      */
