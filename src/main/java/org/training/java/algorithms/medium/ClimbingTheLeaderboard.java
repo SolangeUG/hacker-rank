@@ -27,9 +27,8 @@ public class ClimbingTheLeaderboard {
      * @param alice an array of integers that represent Alice's scores
      * @return an array of integers that represent Alice's ranks
      */
-    private static int[] climbingLeaderboard(int[] scores, int[] alice) {
-        // TODO: implement method logic!
-        return new int[scores.length];
+    public static int[] climbingLeaderboard(int[] scores, int[] alice) {
+        return new int[]{};
     }
 
     /**
