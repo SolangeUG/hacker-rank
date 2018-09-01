@@ -52,6 +52,10 @@ class BirthdayCakeCandlesShould {
         int[] heights = {1, 2, 4, 8, 1, 4, 8};
         int result = BirthdayCakeCandles.birthdayCakeCandles(heights);
         assertEquals(2, result);
+
+        int[] otherHeights = {8, 8, 8, 8};
+        result = BirthdayCakeCandles.birthdayCakeCandles(otherHeights);
+        assertEquals(4, result);
     }
 
 

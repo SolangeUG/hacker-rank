@@ -17,16 +17,15 @@ import java.util.Scanner;
 public class BirthdayCakeCandles {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static Integer[] sorted = new Integer[]{};
 
     /**
-     * Return a sorted array of (boxed) integers in descending order
+     * Initialize a sorted array of (boxed) integers in descending order
      * @param values an input array of (primiteve) integers
-     * @return sorted array
      */
-    private static Integer[] sortInDescendingOrder(int[] values) {
-        Integer[] integers = Arrays.stream(values).boxed().toArray(Integer[]::new);
-        Arrays.sort(integers, Comparator.reverseOrder());
-        return integers;
+    private static void sortInDescendingOrder(int[] values) {
+        sorted = Arrays.stream(values).boxed().toArray(Integer[]::new);
+        Arrays.sort(sorted, Comparator.reverseOrder());
     }
 
     /**
@@ -45,10 +44,10 @@ public class BirthdayCakeCandles {
         // are all array values within bounds?
         int minimum = 0;
         int maximum = (int) Math.pow(10, 7);
-        Integer[] paramObjects = sortInDescendingOrder(parameters);
+        sortInDescendingOrder(parameters);
 
-        return paramObjects[0] <= maximum
-                && paramObjects[size - 1] >= minimum;
+        return sorted[0] <= maximum
+                && sorted[size - 1] >= minimum;
     }
 
     /**
@@ -60,7 +59,6 @@ public class BirthdayCakeCandles {
         int result = -1;
 
         if (isValid(heights)) {
-            Integer[] sorted = sortInDescendingOrder(heights);
             // The highest value is in the first position, so at least one candle will be blown out.
             result = 1;
             Integer highest = sorted[0];
