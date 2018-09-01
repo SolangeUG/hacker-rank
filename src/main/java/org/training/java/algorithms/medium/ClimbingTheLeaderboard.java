@@ -3,7 +3,10 @@ package org.training.java.algorithms.medium;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
+import java.util.stream.Collector;
 
 /**
  * Alice is playing an arcade game and wants to climb to the top of the leaderboard and wants to track her ranking.
@@ -22,13 +25,71 @@ public class ClimbingTheLeaderboard {
     private static final Scanner scanner = new Scanner(System.in);
 
     /**
+     * Check whether input array values are within 0 <= i <= Math.pow(10, 7)
+     * @param scores an array of integers that represent leaderboard scores
+     * @param alice an array of integers that represent Alice's scores
+     * @return true if input values are valid, false otherwise.
+     */
+    private static boolean validateInput(int[] scores, int[] alice) {
+        if (scores.length == 0 || alice.length == 0) {
+            return false;
+        }
+
+        int minValue = 0;
+        int maxValue = (int) Math.pow(10, 9);
+
+        int scoresSize = scores.length;
+        if (scores[0] > maxValue || scores[scoresSize - 1] < minValue) {
+            return false;
+        }
+
+        Arrays.sort(alice);
+        int aliceSize = alice.length;
+        return alice[0] >= minValue && alice[aliceSize - 1] <= maxValue;
+    }
+
+    /**
      * Return an integer array where each element res[j] represents Alice's rank after the jth game
      * @param scores an array of integers that represent leaderboard scores
      * @param alice an array of integers that represent Alice's scores
      * @return an array of integers that represent Alice's ranks
      */
     public static int[] climbingLeaderboard(int[] scores, int[] alice) {
-        return new int[]{};
+        int[] result = new int[]{};
+
+        if (validateInput(scores, alice)) {
+            int size = alice.length;
+            result = new int[size];
+
+            int position = 1;
+            int previousValue = -1;
+            for (int i = 0; i < size; i++) {
+                for (int score : scores) {
+                    if (alice[i] < score) {
+                        if (score != previousValue) {
+                            position++;
+                            previousValue = score;
+                        }
+                    } else {
+                        result[i] = position;
+                        previousValue = -1;
+                        position = 1;
+                        break;
+                    }
+                }
+
+                // we've walked through all the values in scores array
+                // and, alice[i] is smaller than all the values in scores array
+                if (previousValue == scores[scores.length - 1]) {
+                    result[i] = position;
+                    previousValue = -1;
+                    position = 1;
+                }
+
+            }
+        }
+
+        return result;
     }
 
     /**
