@@ -19,6 +19,17 @@ public class BirthdayCakeCandles {
     private static final Scanner scanner = new Scanner(System.in);
 
     /**
+     * Return a sorted array of (boxed) integers in descending order
+     * @param values an input array of (primiteve) integers
+     * @return sorted array
+     */
+    private static Integer[] sortInDescendingOrder(int[] values) {
+        Integer[] integers = Arrays.stream(values).boxed().toArray(Integer[]::new);
+        Arrays.sort(integers, Comparator.reverseOrder());
+        return integers;
+    }
+
+    /**
      * Check whether input array values are within 0 <= i <= Mapth(10, 7)
      * @param parameters an array of integers
      * @return true if input values are valid, false otherwise.
@@ -34,11 +45,10 @@ public class BirthdayCakeCandles {
         // are all array values within bounds?
         int minimum = 0;
         int maximum = (int) Math.pow(10, 7);
-        Arrays.sort(Arrays.stream(parameters).boxed().toArray(Integer[]::new),
-                    Comparator.reverseOrder());
+        Integer[] paramObjects = sortInDescendingOrder(parameters);
 
-        return parameters[0] <= maximum
-                && parameters[size - 1] >= minimum;
+        return paramObjects[0] <= maximum
+                && paramObjects[size - 1] >= minimum;
     }
 
     /**
@@ -50,7 +60,7 @@ public class BirthdayCakeCandles {
         int result = -1;
 
         if (isValid(heights)) {
-            //TODO : complete
+            //TODO : implement method logic!
         }
 
         return result;
