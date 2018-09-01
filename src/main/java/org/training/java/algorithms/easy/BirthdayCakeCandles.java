@@ -3,6 +3,8 @@ package org.training.java.algorithms.easy;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -17,13 +19,41 @@ public class BirthdayCakeCandles {
     private static final Scanner scanner = new Scanner(System.in);
 
     /**
+     * Check whether input array values are within 0 <= i <= Mapth(10, 7)
+     * @param parameters an array of integers
+     * @return true if input values are valid, false otherwise.
+     */
+    private static boolean isValid(int[] parameters) {
+
+        // input array shouldn't be empty
+        int size = parameters.length;
+        if (size == 0) {
+            return false;
+        }
+
+        // are all array values within bounds?
+        int minimum = 0;
+        int maximum = (int) Math.pow(10, 7);
+        Arrays.sort(Arrays.stream(parameters).boxed().toArray(Integer[]::new),
+                    Comparator.reverseOrder());
+
+        return parameters[0] <= maximum
+                && parameters[size - 1] >= minimum;
+    }
+
+    /**
      * Return an integer representing the number of candles that can be blown out.
      * @param heights an integer array representing candle heights
      * @return total number of candles that can be blown out.
      */
     public static int birthdayCakeCandles(int[] heights) {
-        // TODO: implement method logic!
-        return -1;
+        int result = -1;
+
+        if (isValid(heights)) {
+            //TODO : complete
+        }
+
+        return result;
     }
 
     /**
