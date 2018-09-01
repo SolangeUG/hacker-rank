@@ -43,9 +43,10 @@ public class ClimbingTheLeaderboard {
             return false;
         }
 
-        Arrays.sort(alice);
-        int aliceSize = alice.length;
-        return alice[0] >= minValue && alice[aliceSize - 1] <= maxValue;
+        int[] aliceCopy = Arrays.copyOf(alice, alice.length);
+        Arrays.sort(aliceCopy);
+        int aliceSize = aliceCopy.length;
+        return aliceCopy[0] >= minValue && aliceCopy[aliceSize - 1] <= maxValue;
     }
 
     /**
@@ -78,7 +79,7 @@ public class ClimbingTheLeaderboard {
                     }
                 }
 
-                // we've walked through all the values in scores array
+                // here, we've walked through all the values in scores array
                 // and, alice[i] is smaller than all the values in scores array
                 if (previousValue == scores[scores.length - 1]) {
                     result[i] = position;

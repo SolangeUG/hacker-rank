@@ -42,7 +42,7 @@ class ClimbingTheLeaderboardShould {
     }
 
     @Test
-    @DisplayName("should return {1} when Alice first score is higher than anyone else's")
+    @DisplayName("should return {1} when Alice only score is higher than anyone else's")
     void returnFirstPlaceWhenAliceScoresBest() {
         int[] scores = {80, 80, 50, 40, 20, 20, 10};
         int[] alice = {90};
@@ -50,5 +50,37 @@ class ClimbingTheLeaderboardShould {
         assertEquals(1, results.length);
         assertEquals(1, results[0]);
     }
+
+    @Test
+    @DisplayName("should return {6} when Alice only score is lower than anyone else's")
+    void returnLastPlaceWhenAliceScoresLowest() {
+        int[] scores = {80, 80, 50, 40, 20, 20, 10};
+        int[] alice = {5};
+        int[] results = ClimbingTheLeaderboard.climbingLeaderboard(scores, alice);
+        assertEquals(1, results.length);
+        assertEquals(6, results[0]);
+
+        scores = new int[]{80, 50, 40, 20, 10};
+        results = ClimbingTheLeaderboard.climbingLeaderboard(scores, alice);
+        assertEquals(1, results.length);
+        assertEquals(6, results[0]);
+
+        scores = new int[]{80, 50, 40, 40, 20, 10, 10};
+        results = ClimbingTheLeaderboard.climbingLeaderboard(scores, alice);
+        assertEquals(1, results.length);
+        assertEquals(6, results[0]);
+    }
+
+    @Test
+    @DisplayName("should return {1, 6} when Alice first scores highest then lowest than anyone else's")
+    void returnFirstAndLastPositionsWhenAliceScoresHighestThenLowest() {
+        int[] scores = {80, 80, 50, 40, 20, 20, 10};
+        int[] alice = {90, 5};
+        int[] results = ClimbingTheLeaderboard.climbingLeaderboard(scores, alice);
+        assertEquals(2, results.length);
+        assertEquals(1, results[0]);
+        assertEquals(6, results[1]);
+    }
+
 
 }
