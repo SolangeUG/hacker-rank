@@ -60,7 +60,16 @@ public class BirthdayCakeCandles {
         int result = -1;
 
         if (isValid(heights)) {
-            //TODO : implement method logic!
+            Integer[] sorted = sortInDescendingOrder(heights);
+            // The highest value is in the first position, so at least one candle will be blown out.
+            result = 1;
+            Integer highest = sorted[0];
+            for (int i = 1; i < sorted.length; i++) {
+                // Count the number of "tallest" candles, ie: whose height is equal to highest.
+                if (sorted[i].compareTo(highest) == 0) {
+                    result++;
+                }
+            }
         }
 
         return result;

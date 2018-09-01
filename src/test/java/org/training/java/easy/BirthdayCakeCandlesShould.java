@@ -38,4 +38,13 @@ class BirthdayCakeCandlesShould {
     }
 
 
+    @Test
+    @DisplayName("return 1 when input values are all unique")
+    void returnOneWhenInputValuesAreUnique() {
+        int[] heights = {1, 2, 4, 8};
+        int result = BirthdayCakeCandles.birthdayCakeCandles(heights);
+        assertEquals(1, result);
+    }
+
+
 }
