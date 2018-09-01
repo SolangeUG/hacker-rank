@@ -46,5 +46,13 @@ class BirthdayCakeCandlesShould {
         assertEquals(1, result);
     }
 
+    @Test
+    @DisplayName("return count of highest value when it's duplicated in input array")
+    void returnCountOfHighestValueWhenDuplicatedInInputArray() {
+        int[] heights = {1, 2, 4, 8, 1, 4, 8};
+        int result = BirthdayCakeCandles.birthdayCakeCandles(heights);
+        assertEquals(2, result);
+    }
+
 
 }
