@@ -55,7 +55,7 @@ public class BirthdayCakeCandles {
      * @param heights an integer array representing candle heights
      * @return total number of candles that can be blown out.
      */
-    public static int birthdayCakeCandles(int[] heights) {
+    static int birthdayCakeCandles(int[] heights) {
         int result = -1;
 
         if (isValid(heights)) {

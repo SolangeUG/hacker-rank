@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
-import java.util.stream.Collector;
 
 /**
  * Alice is playing an arcade game and wants to climb to the top of the leaderboard and wants to track her ranking.
@@ -55,7 +53,7 @@ public class ClimbingTheLeaderboard {
      * @param alice an array of integers that represent Alice's scores
      * @return an array of integers that represent Alice's ranks
      */
-    public static int[] climbingLeaderboard(int[] scores, int[] alice) {
+    static int[] climbingLeaderboard(int[] scores, int[] alice) {
         int[] result = new int[]{};
 
         if (validateInput(scores, alice)) {
