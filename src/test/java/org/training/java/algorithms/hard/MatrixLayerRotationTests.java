@@ -1,4 +1,4 @@
-package org.training.java.hard;
+package org.training.java.algorithms.hard;
 
 import org.junit.jupiter.api.DisplayName;
 
@@ -7,6 +7,6 @@ import org.junit.jupiter.api.DisplayName;
  * @author Solange U. Gasengayire
  */
 @DisplayName("Matrix Layer Rotation should")
-public class MatrixLayerRotationShould {
+public class MatrixLayerRotationTests {
 
 }

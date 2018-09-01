@@ -1,8 +1,7 @@
-package org.training.java.easy;
+package org.training.java.algorithms.easy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.training.java.algorithms.easy.BirthdayCakeCandles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Solange U. Gasengayire
  */
 @DisplayName("Birthday Cake Candles should")
-class BirthdayCakeCandlesShould {
+class BirthdayCakeCandlesTests {
 
     @Test
     @DisplayName("make sure input array values are positive integers")

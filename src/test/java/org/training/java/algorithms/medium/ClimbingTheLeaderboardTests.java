@@ -1,8 +1,7 @@
-package org.training.java.medium;
+package org.training.java.algorithms.medium;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.training.java.algorithms.medium.ClimbingTheLeaderboard;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Solange U. Gasengayire
  */
 @DisplayName("Climbing The Leaderboard should")
-class ClimbingTheLeaderboardShould {
+class ClimbingTheLeaderboardTests {
 
     @Test
     @DisplayName("make sure input parameters are positive")
@@ -72,7 +71,7 @@ class ClimbingTheLeaderboardShould {
     }
 
     @Test
-    @DisplayName("should return {1, 6} when Alice first scores highest then lowest than anyone else's")
+    @DisplayName("should return {1, 6} when Alice first scores highest then lowest than anyone else")
     void returnFirstAndLastPositionsWhenAliceScoresHighestThenLowest() {
         int[] scores = {80, 80, 50, 40, 20, 20, 10};
         int[] alice = {90, 5};
@@ -80,6 +79,17 @@ class ClimbingTheLeaderboardShould {
         assertEquals(2, results.length);
         assertEquals(1, results[0]);
         assertEquals(6, results[1]);
+    }
+
+    @Test
+    @DisplayName("should return {6, 1} when Alice first scores lowest then highest than anyone else")
+    void returnLastAndFirstPositionsWhenAliceScoresLowestThenHighest() {
+        int[] scores = {80, 80, 50, 40, 20, 20, 10};
+        int[] alice = {5, 90};
+        int[] results = ClimbingTheLeaderboard.climbingLeaderboard(scores, alice);
+        assertEquals(2, results.length);
+        assertEquals(6, results[0]);
+        assertEquals(1, results[1]);
     }
 
 
