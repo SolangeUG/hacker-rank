@@ -27,4 +27,18 @@ class ClimbingTheLeaderboardShould {
         assertEquals(0, result.length);
     }
 
+    @Test
+    @DisplayName("make sure input parameters are within bounds")
+    void makeSureInputParametersAreWithinBounds() {
+        int[] scores = {80, 120, 20, Integer.MAX_VALUE};
+        int[] aliceScores = {100, 40};
+        int[] result = ClimbingTheLeaderboard.climbingLeaderboard(scores, aliceScores);
+        assertEquals(0, result.length);
+
+        scores = new int[]{80, 120, 70, Integer.MIN_VALUE};
+        aliceScores = new int[]{0, 15, Integer.MAX_VALUE};
+        result = ClimbingTheLeaderboard.climbingLeaderboard(scores, aliceScores);
+        assertEquals(0, result.length);
+    }
+
 }
