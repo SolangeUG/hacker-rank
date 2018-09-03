@@ -1,8 +1,6 @@
 package org.training.java.algorithms.medium;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -19,7 +17,16 @@ import java.util.*;
  */
 public class ClimbingTheLeaderboard {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner;
+
+    static {
+        try {
+            scanner = new Scanner(new File("data/leaderboard_input.txt"));
+        } catch (FileNotFoundException e) {
+            scanner = new Scanner(System.in);
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Check whether input array values are within 0 <= i <= Math.pow(10, 7)
