@@ -3,8 +3,7 @@ package org.training.java.algorithms.medium;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Alice is playing an arcade game and wants to climb to the top of the leaderboard and wants to track her ranking.
@@ -60,32 +59,18 @@ public class ClimbingTheLeaderboard {
             int size = alice.length;
             result = new int[size];
 
-            int position = 1;
-            int previousValue = -1;
+            TreeSet<Integer> scoreSet =  new TreeSet<>();
+            Collections.addAll(scoreSet, Arrays.stream(scores).boxed().toArray(Integer[]::new));
+
             for (int i = 0; i < size; i++) {
-                for (int score : scores) {
-                    if (alice[i] < score) {
-                        if (score != previousValue) {
-                            position++;
-                            previousValue = score;
-                        }
-                    } else {
-                        result[i] = position;
-                        previousValue = -1;
-                        position = 1;
-                        break;
-                    }
+                SortedSet<Integer> subSet = scoreSet.tailSet(alice[i], true);
+                int ndx = subSet.size();
+                if (! subSet.contains(alice[i])) {
+                    ndx += 1;
                 }
-
-                // here, we've walked through all the values in scores array
-                // and, alice[i] is smaller than all the values in scores array
-                if (previousValue == scores[scores.length - 1]) {
-                    result[i] = position;
-                    previousValue = -1;
-                    position = 1;
-                }
-
+                result[i] = ndx;
             }
+
         }
 
         return result;
