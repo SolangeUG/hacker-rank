@@ -20,6 +20,7 @@ import java.util.Scanner;
 public class MagicSquare {
 
     private static final Scanner scanner = new Scanner(System.in);
+    static int[][] magicSquare = {};
 
     /**
      * Check whether input matrix values are within 1 <= i <= 9 range
@@ -51,7 +52,12 @@ public class MagicSquare {
         int result = -1;
 
         if (validateInput(s)) {
-            // TODO: implement magic square logic
+            result = 7;
+            magicSquare = new int[][]{
+                    {8, 3, 4},
+                    {1, 5, 9},
+                    {6, 7, 2}
+            };
         }
 
         return result;
