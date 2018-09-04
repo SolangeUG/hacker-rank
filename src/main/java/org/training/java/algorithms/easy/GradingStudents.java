@@ -3,6 +3,7 @@ package org.training.java.algorithms.easy;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -26,12 +27,34 @@ public class GradingStudents {
     private static final Scanner scan = new Scanner(System.in);
 
     /**
+     * Check whether input array values are within 0 <= i <= 100
+     * @param grades an integer array of students grades
+     * @return true if input values are valid, false otherwise.
+     */
+    private static boolean validateInput(int[] grades) {
+        int size = grades.length;
+        if (size == 0) {
+            return false;
+        }
+
+        int[] copy = Arrays.copyOf(grades, size);
+        Arrays.sort(copy);
+        return copy[0] >= 0 && copy[size -1] <= 100;
+    }
+
+    /**
      * Return an integer array of rounded grades
      * @param grades an integer array of students grades before rounding
      * @return rounded grades
      */
     static int[] gradingStudents(int[] grades) {
-        return new int[]{};
+        int[] result = {};
+
+        if (validateInput(grades)) {
+            // TODO: implement rounding logic!
+        }
+
+        return result;
     }
 
     /**
