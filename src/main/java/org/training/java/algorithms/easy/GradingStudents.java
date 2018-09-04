@@ -43,6 +43,19 @@ public class GradingStudents {
     }
 
     /**
+     * Return the next multiple of 5 from a given value
+     * @param value input value
+     * @return next multiple of 5
+     */
+    private static int getNextFiveMultiple(int value) {
+        int result = value;
+        while (result % 5 != 0) {
+            result++;
+        }
+        return result;
+    }
+
+    /**
      * Return an integer array of rounded grades
      * @param grades an integer array of students grades before rounding
      * @return rounded grades
@@ -59,6 +72,9 @@ public class GradingStudents {
                 if (grades[i] < roundingLimit) {
                     // grades lower than 38 are not rounded
                     result[i] = grades[i];
+                } else {
+                    int multiple = getNextFiveMultiple(grades[i]);
+                    result[i] = (multiple - grades[i]) < 3 ? multiple : grades[i];
                 }
             }
         }
