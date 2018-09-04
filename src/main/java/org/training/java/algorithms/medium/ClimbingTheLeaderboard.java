@@ -69,8 +69,9 @@ public class ClimbingTheLeaderboard {
             TreeSet<Integer> scoreSet =  new TreeSet<>();
             Collections.addAll(scoreSet, Arrays.stream(scores).boxed().toArray(Integer[]::new));
 
+            SortedSet<Integer> subSet = scoreSet;
             for (int i = 0; i < size; i++) {
-                SortedSet<Integer> subSet = scoreSet.tailSet(alice[i], true);
+                subSet = subSet.tailSet(alice[i]);
                 int ndx = subSet.size();
                 if (! subSet.contains(alice[i])) {
                     ndx += 1;
