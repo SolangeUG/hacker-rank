@@ -44,7 +44,7 @@ class GradingStudentsTests {
     }
 
     @Test
-    @DisplayName("not round grades whose difference with the next five multiple is higher than 3")
+    @DisplayName("not round grades whose difference with the next five multiple is higher than or equal to 3")
     void notRoundGradesWhoseDifferenceWithNextFiveMultipleIsHigherThanThree() {
         int[] grades = {40, 51, 66, 87};
         int[] results = GradingStudents.gradingStudents(grades);
@@ -54,6 +54,20 @@ class GradingStudentsTests {
                 () -> assertEquals(51, results[1]),
                 () -> assertEquals(66, results[2]),
                 () -> assertEquals(87, results[3])
+        );
+    }
+
+    @Test
+    @DisplayName("round grades whose difference with the next five multiple is lower than 3")
+    void roundGradesWhoseDifferenceWithNextFiveMultipleIsLowerThanThree() {
+        int[] grades = {38, 54, 68, 94};
+        int[] results = GradingStudents.gradingStudents(grades);
+        assertAll("return rounded grades for example case {38, 54, 68, 94} as {40, 55, 70, 95}",
+                () -> assertEquals(4, results.length),
+                () -> assertEquals(40, results[0]),
+                () -> assertEquals(55, results[1]),
+                () -> assertEquals(70, results[2]),
+                () -> assertEquals(95, results[3])
         );
     }
 }
