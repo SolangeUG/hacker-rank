@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Unit tests for the grading students challenge.
  * @author Solange U. Gasengayire
  */
-@DisplayName("Grading Students Should")
+@DisplayName("Grading Students should")
 class GradingStudentsTests {
 
     @Test
