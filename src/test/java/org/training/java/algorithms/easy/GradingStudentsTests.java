@@ -3,6 +3,7 @@ package org.training.java.algorithms.easy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -26,5 +27,19 @@ class GradingStudentsTests {
         int[] grades = {5, 10, 15, 20, 185, 200};
         int[] results = GradingStudents.gradingStudents(grades);
         assertEquals(0, results.length);
+    }
+
+    @Test
+    @DisplayName("not round grades that are lower than 38")
+    void notRoundGradesLowerThanThirtyEight() {
+        int[] grades = {5, 10, 15, 37};
+        int[] results = GradingStudents.gradingStudents(grades);
+        assertAll("return unrounded grades for example case {5, 10, 15, 37}",
+                () -> assertEquals(4, results.length),
+                () -> assertEquals(5, results[0]),
+                () -> assertEquals(10, results[1]),
+                () -> assertEquals(15, results[2]),
+                () -> assertEquals(37, results[3])
+        );
     }
 }
