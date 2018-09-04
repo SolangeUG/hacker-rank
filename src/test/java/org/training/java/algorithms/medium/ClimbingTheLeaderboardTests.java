@@ -17,12 +17,12 @@ class ClimbingTheLeaderboardTests {
     @DisplayName("make sure input parameters are positive")
     void makeSureInputParametersArePositiveIntegers() {
         int[] scores = {80, 120, 0, -5};
-        int[] aliceScores = {100, 40};
+        int[] aliceScores = {40, 100};
         int[] result = ClimbingTheLeaderboard.climbingLeaderboard(scores, aliceScores);
         assertEquals(0, result.length);
 
         scores = new int[]{120, 80, 70, 50};
-        aliceScores = new int[]{0, 15, -10};
+        aliceScores = new int[]{-10, 0, 15};
         result = ClimbingTheLeaderboard.climbingLeaderboard(scores, aliceScores);
         assertEquals(0, result.length);
     }
@@ -31,7 +31,7 @@ class ClimbingTheLeaderboardTests {
     @DisplayName("make sure input parameters are within bounds")
     void makeSureInputParametersAreWithinBounds() {
         int[] scores = {Integer.MAX_VALUE, 120, 80, 20};
-        int[] aliceScores = {100, 40};
+        int[] aliceScores = {40, 100};
         int[] result = ClimbingTheLeaderboard.climbingLeaderboard(scores, aliceScores);
         assertEquals(0, result.length);
 
@@ -72,14 +72,15 @@ class ClimbingTheLeaderboardTests {
     }
 
     @Test
-    @DisplayName("return {1, 6} when Alice first scores highest then lowest than anyone else")
+    @DisplayName("return {6, 4, 1} when Alice scores lowest, middle then highest than anyone else")
     void returnFirstAndLastPositionsWhenAliceScoresHighestThenLowest() {
         int[] scores = {80, 80, 50, 40, 20, 20, 10};
-        int[] alice = {90, 5};
+        int[] alice = {5, 30, 90};
         int[] results = ClimbingTheLeaderboard.climbingLeaderboard(scores, alice);
-        assertEquals(2, results.length);
-        assertEquals(1, results[0]);
-        assertEquals(6, results[1]);
+        assertEquals(3, results.length);
+        assertEquals(6, results[0]);
+        assertEquals(4, results[1]);
+        assertEquals(1, results[2]);
     }
 
     @Test
