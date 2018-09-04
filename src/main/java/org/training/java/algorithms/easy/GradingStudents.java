@@ -51,7 +51,16 @@ public class GradingStudents {
         int[] result = {};
 
         if (validateInput(grades)) {
-            // TODO: implement rounding logic!
+            int size = grades.length;
+            result = new int[size];
+
+            int roundingLimit = 38;
+            for (int i = 0; i < size; i++) {
+                if (grades[i] < roundingLimit) {
+                    // grades lower than 38 are not rounded
+                    result[i] = grades[i];
+                }
+            }
         }
 
         return result;
