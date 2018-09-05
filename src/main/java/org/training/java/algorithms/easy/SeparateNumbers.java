@@ -22,9 +22,12 @@ public class SeparateNumbers {
      * If it's beautiful, print YES x, where x is the first number of the increasing sequence.
      * If there are multiple such values of x, choose the smallest. Otherwise, print NO.
      * @param s input numeric string
+     * @exception IllegalArgumentException exception in case input string s is null or empty
      */
-    static void separateNumbers(String s) {
-
+    static void separateNumbers(String s) throws IllegalArgumentException {
+        if (s == null || s.isEmpty()) {
+            throw new IllegalArgumentException("Input string parameter shouldn't be null or empty");
+        }
 
     }
 
