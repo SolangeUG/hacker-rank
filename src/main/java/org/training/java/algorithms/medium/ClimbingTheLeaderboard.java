@@ -2,6 +2,11 @@ package org.training.java.algorithms.medium;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.binarySearch;
+import static java.util.stream.IntStream.of;
+import static java.util.stream.IntStream.range;
 
 /**
  * Alice is playing an arcade game and wants to climb to the top of the leaderboard and wants to track her ranking.
@@ -66,17 +71,25 @@ public class ClimbingTheLeaderboard {
             int size = alice.length;
             result = new int[size];
 
-            TreeSet<Integer> scoreSet =  new TreeSet<>();
-            Collections.addAll(scoreSet, Arrays.stream(scores).boxed().toArray(Integer[]::new));
-
-            SortedSet<Integer> subSet = scoreSet;
-            for (int i = 0; i < size; i++) {
-                subSet = subSet.tailSet(alice[i]);
-                int ndx = subSet.size();
-                if (! subSet.contains(alice[i])) {
-                    ndx += 1;
+            int[] uniqueScores = of(scores).distinct().toArray();
+            int maxNdx = uniqueScores.length - 1;
+            for (int j = 0; j < size; j++) {
+                int score = alice[j];
+                while (maxNdx >= 0) {
+                    if (score >= uniqueScores[maxNdx]) {
+                        // alice's score is higher than scores encounted so far
+                        maxNdx--;
+                    } else {
+                        // alice's score is lower or equal to current score
+                        // so, we mark this position
+                        result[j] = maxNdx + 2;
+                        break;
+                    }
                 }
-                result[i] = ndx;
+                if (maxNdx < 0) {
+                    // alice's score is higher than all the other scores
+                    result[j] = 1;
+                }
             }
 
         }
