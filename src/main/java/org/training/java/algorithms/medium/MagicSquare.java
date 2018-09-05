@@ -6,14 +6,19 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * We define a magic square to be an n x n matrix of distinct positive integers from 1 to n² where the sum of any row,
+ * We define a magic square to be an nxn matrix of distinct positive integers from 1 to n² where the sum of any row,
  * column, or diagonal of length n is always equal to the same number: the magic constant.
  *
- * You will be given a 3 x 3 matrix s of integers in the inclusive range [1, 9].
+ * You will be given a 3x3 matrix s of integers in the inclusive range [1, 9].
  * We can convert any digit a to any other digit b in the range [1, 9] at cost of |a-b|.
  * Given s, convert it into a magic square at minimal cost. Print this cost on a new line.
  *
  * Note: The resulting magic square must contain distinct integers in the inclusive range [1, 9].
+ *       Excluding rotations and reflections, there is exactly one 3×3 magic square!
+ *       Therefore, given a matrix s, after conversion, it will result into a "version" of this 3x3 magic square:
+ *       [4, 9, 2,
+ *        3, 5, 7,
+ *        8, 1, 6]
  *
  * @author Solange U. Gasengayire
  */
@@ -52,12 +57,35 @@ public class MagicSquare {
         int result = -1;
 
         if (validateInput(s)) {
-            result = 7;
             magicSquare = new int[][]{
-                    {8, 3, 4},
-                    {1, 5, 9},
-                    {6, 7, 2}
+                    {4, 9, 2},
+                    {3, 5, 7},
+                    {8, 1, 6}
             };
+
+            int magicSquares[][] =
+                    {
+                        {4, 9, 2, 3, 5, 7, 8, 1, 6},
+                        {4, 3, 8, 9, 5, 1, 2, 7, 6},
+                        {2, 9, 4, 7, 5, 3, 6, 1, 8},
+                        {2, 7, 6, 9, 5, 1, 4, 3, 8},
+                        {8, 1, 6, 3, 5, 7, 4, 9, 2},
+                        {8, 3, 4, 1, 5, 9, 6, 7, 2},
+                        {6, 7, 2, 1, 5, 9, 8, 3, 4},
+                        {6, 1, 8, 7, 5, 3, 2, 9, 4},
+                    };
+
+            result = Integer.MAX_VALUE;
+
+            for (int i = 0 ; i < 8 ; i++) {
+                int temp = Math.abs(s[0][0] - magicSquares[i][0])
+                            + Math.abs(s[0][1] - magicSquares[i][1]) + Math.abs(s[0][2] - magicSquares[i][2])
+                        + Math.abs(s[1][0] - magicSquares[i][3])
+                            + Math.abs(s[1][1] - magicSquares[i][4]) + Math.abs(s[1][2] - magicSquares[i][5])
+                        + Math.abs(s[2][0] - magicSquares[i][6])
+                            + Math.abs(s[2][1] - magicSquares[i][7]) + Math.abs(s[2][2] - magicSquares[i][8]);
+                result = temp < result ? temp : result;
+            }
         }
 
         return result;
