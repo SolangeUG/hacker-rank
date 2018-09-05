@@ -1,12 +1,10 @@
 package org.training.java.algorithms.medium;
 
 import java.io.*;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Scanner;
 
-import static java.util.Arrays.binarySearch;
 import static java.util.stream.IntStream.of;
-import static java.util.stream.IntStream.range;
 
 /**
  * Alice is playing an arcade game and wants to climb to the top of the leaderboard and wants to track her ranking.
