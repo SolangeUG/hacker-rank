@@ -15,9 +15,20 @@ class SeparateNumbersTests {
     @Test
     @DisplayName("make sure input string is not empty")
     void makeSureInputStringIsNotEmpty() {
-        String value = "";
+        final String value = null;
         assertThrows(IllegalArgumentException.class,
                 () -> SeparateNumbers.separateNumbers(value)
         );
+
+        String otherValue = "";
+        assertThrows(IllegalArgumentException.class,
+                () -> SeparateNumbers.separateNumbers(otherValue)
+        );
+
+        String lastValue = "abcd";
+        assertThrows(IllegalArgumentException.class,
+                () -> SeparateNumbers.separateNumbers(lastValue)
+        );
+
     }
 }
