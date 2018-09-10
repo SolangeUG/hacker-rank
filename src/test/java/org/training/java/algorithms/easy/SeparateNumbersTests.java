@@ -3,6 +3,7 @@ package org.training.java.algorithms.easy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
@@ -30,5 +31,14 @@ class SeparateNumbersTests {
                 () -> SeparateNumbers.separateNumbers(lastValue)
         );
 
+    }
+
+    @Test
+    @DisplayName("return YES for 'single-digit' beautiful strings")
+    void returnYESForSingleDigitBeautifulStrings() {
+        assertEquals("YES 1", SeparateNumbers.separateNumbers("1234"));
+        assertEquals("YES 4", SeparateNumbers.separateNumbers("4567"));
+        assertEquals("YES 7", SeparateNumbers.separateNumbers("789"));
+        assertEquals("YES 2", SeparateNumbers.separateNumbers("23456789"));
     }
 }
