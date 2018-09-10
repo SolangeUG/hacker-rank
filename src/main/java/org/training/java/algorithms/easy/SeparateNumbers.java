@@ -18,17 +18,34 @@ public class SeparateNumbers {
     private static final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Print whether or not string s is beautiful on a new line.
-     * If it's beautiful, print YES x, where x is the first number of the increasing sequence.
-     * If there are multiple such values of x, choose the smallest. Otherwise, print NO.
+     * Return whether or not string s is beautiful.
      * @param s input numeric string
-     * @exception IllegalArgumentException exception in case input string s is null or empty
+     * @exception NumberFormatException in case input string s is null, empty or can't be converted to an integer.
+     * @return "YES x", where x is the first number of the increasing sequence, if s is beautiful.
+     *         "NO", otherwise.
      */
-    static void separateNumbers(String s) throws IllegalArgumentException {
-        if (s == null || s.isEmpty()) {
-            throw new IllegalArgumentException("Input string parameter shouldn't be null or empty");
+    static String separateNumbers(String s) throws NumberFormatException {
+        String result = "No";
+        Integer value = Integer.valueOf(s);
+
+        int size = s.length();
+
+        // TODO: implement logic!
+        int ndx = size/2;
+        while (ndx > 0) {
+            int current = Integer.valueOf(s.substring(0, ndx));
+            size = String.valueOf(current).length();
+            int next = Integer.valueOf(s.substring(ndx, ndx + size));
+
+            if (next != current + 1) {
+                ndx = ndx / 2;
+            } else {
+                result = "YES " + current;
+                break;
+            }
         }
 
+        return result;
     }
 
     /**
@@ -41,8 +58,7 @@ public class SeparateNumbers {
 
         for (int qItr = 0; qItr < q; qItr++) {
             String s = scanner.nextLine();
-
-            separateNumbers(s);
+            System.out.println(separateNumbers(s));
         }
 
         scanner.close();
